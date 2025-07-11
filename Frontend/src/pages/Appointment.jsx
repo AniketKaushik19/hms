@@ -9,6 +9,7 @@ import axios from 'axios'
 export const Appointment = () => {
   const navigate=useNavigate()
   const {docId}=useParams()
+  const [loading ,setLoading]=useState(false)
   const {doctors,currencySymbol,backendUrl,token,getDoctorsData}=useContext(AppContext)
   const daysofWeek=['SUN','MON','TUE','WED','THU','FRI','SAT']
   const [docInfo,setDocInfo]=useState({
@@ -69,6 +70,7 @@ export const Appointment = () => {
   };
   
   const bookAppointment =async () => {
+    setLoading(true)
     if(!token){
       toast.warn('Login to book appointment')
       return navigate('/login')
@@ -95,6 +97,7 @@ export const Appointment = () => {
         console.log(error)
         toast.error(error.message)
     }
+    setLoading(false)
   }
 
   useEffect(()=>{fetchdocInfo()},[doctors,docId])
@@ -153,7 +156,7 @@ export const Appointment = () => {
                 </p>
             ))}
          </div>
-         <button className=' bg-primary text-white text-sm rounded-full font-light py-3 px-14 my-6 mt-5 ' onClick={bookAppointment}>Book an appointment</button>
+         <button className={` bg-primary text-white text-sm rounded-full font-light py-3 px-14 my-6 mt-5 ${loading && 'bg-gray-500'}`} onClick={bookAppointment} disabled={loading}>Book an appointment</button>
        </div>
        {/* ---listing realted doctor---- */}
        <RelatedDoctor docId={docId} speciality={docInfo.speciality}/>

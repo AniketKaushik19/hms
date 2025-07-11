@@ -16,6 +16,7 @@ const AddDoctor = () => {
       degree:'',
       address:{address1:'',address2:''}
   })
+  const [loading,setLoading]=useState(false)
 const onChangeHandle = (e) => {
     const { name, type, files, value } = e.target;
     
@@ -45,6 +46,7 @@ const onChangeHandle = (e) => {
   const onSubmitHandler = async(event)=>{
       event.preventDefault()
       console.log()
+      setLoading(true)
       try{
         if(!docdetail.image){
           return toast.error("Image not selected")
@@ -87,6 +89,7 @@ const onChangeHandle = (e) => {
         toast.error(error.message)
         console.log(error)
       }
+      setLoading(false)
 
   }
   return (
@@ -173,7 +176,7 @@ const onChangeHandle = (e) => {
               <p className='mt-4 mb-2'>About Doctor</p>
               <textarea onChange={onChangeHandle} name='about' value={docdetail.about}  className='w-full px-4 pt-2 border rounded' placeholder='write about doctor' rows={5} required />
         </div>
-      <button type='submit'  className='bg-primary text-white px-3 py-4 mt-4 rounded-full'>Add Doctor</button>
+      <button type='submit'  className={`bg-primary text-white px-3 py-4 mt-4 rounded-full ${loading && 'bg-gray-600'}`}disabled={loading}>Add Doctor</button>
       </div>
     </form>
   )

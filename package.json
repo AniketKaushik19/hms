@@ -1,0 +1,22 @@
+{
+  "name": "hospital",
+  "version": "1.0.0",
+  "description": "Hospital Management System",
+  "main": "index.js",
+  "scripts": {
+   "build":"npm install --prefix backend &&  npm install --prefix frontend  && npm install --prefix admin && npm run build --prefix frontend && npm run build --prefix admin",
+   "start": "npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AniketKaushik19/hms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AniketKaushik19/hms/issues"
+  },
+  "homepage": "https://github.com/AniketKaushik19/hms#readme"
+}
