@@ -6,7 +6,7 @@ import connectCloudinary from "./Config/Cloudinary.js";
 import adminRouter from "./Routes/adminRoute.js";
 import doctorRouter from "./Routes/doctorRoute.js";
 import userRouter from "./Routes/userRoute.js";
-import path from 'path'  //deployment
+import path from 'path'  //for deployment
 // app config
 const app=express()
 const port =process.env.PORT || 3000
