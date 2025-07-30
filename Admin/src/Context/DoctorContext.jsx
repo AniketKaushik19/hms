@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 export const DoctorContext=createContext()
 
 const DoctorContextProvider=(props)=>{
-    const backendUrl=import.meta.env.MODE==="development" ? "http://localhost:3000" : "/admin"
+    const backendUrl="https://hms-jade.vercel.app"
     const [dToken,setDToken]=useState(localStorage.getItem("dToken")?localStorage.getItem("dToken"):false)
     const [appointments,setAppointments]=useState([])
     const [dashData,setDashData]=useState(false)
